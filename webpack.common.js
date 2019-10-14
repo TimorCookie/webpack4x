@@ -7,8 +7,9 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
     entry: path.join(__dirname, '/src/index.js'), // 入口文件
     output: {
-        filename: 'bundle.js',//打包后输出文件的文件名
+        filename: '[name].bundle.js',//打包后输出文件的文件名
         path: path.join(__dirname, '/dist'),//打包后的文件存放的地方
+        chunkFilename: '[name].bundle.js',
     },
    
     devtool: 'source-map', // 会生成对于调试的完整的.map文件，但同时也会减慢打包速度
