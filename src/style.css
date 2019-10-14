@@ -1,5 +1,6 @@
 body {
     background: #999;
+    background-image: url('./images/logo-300.png');
 }
 
 #root div{

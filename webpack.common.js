@@ -10,12 +10,7 @@ module.exports = {
         filename: 'bundle.js',//打包后输出文件的文件名
         path: path.join(__dirname, '/dist'),//打包后的文件存放的地方
     },
-    // devServer: {
-    //     contentBase: "./dist", // 本地服务器所加载文件的目录
-    //     port: "8088",   // 设置端口号为8088
-    //     inline: true, // 文件修改后实时刷新
-    //     historyApiFallback: true, //不跳转
-    // },
+   
     devtool: 'source-map', // 会生成对于调试的完整的.map文件，但同时也会减慢打包速度
     module: {
         rules: [
@@ -37,6 +32,18 @@ module.exports = {
                     loader: 'babel-loader',
                 },
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(png|jpg|svg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 1000  // 限制只有小于1kb的图片才转为base64，例子图片为1.47kb,所以不会被转化
+                        }
+                    }
+                ]
+                
             }
         ]
     },
